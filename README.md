@@ -31,21 +31,30 @@ These are **custom git commands** that encourages the git user to write formatte
 
 ## Usage
 
-Once you install, you can have 10 git aliases.
+Once you install, you can use 10 git aliases in following ways:
+#### 1. __Only Committing__
+**```git <type> <scope> <commit-message>```** -> **```git commit -m '<type>(<scope>): <commit-message>'```** 
 
-Git alias  -> Actual command
+e.g.
+* _**git feat** install.sh "added options feature"_ __->__ _git commit -m 'feat(install.sh): added options feature'_
+* _**git docs** readme "updated usage section"_ __->__ _git commit -m 'docs(readme): updated usage section'_
+* _**git chore** package.json "Added task for uglify"_ __->__ _git commit -m 'chore(package.json): added task for uglify'_
+* _**git fix** app "maximum call stack issue"_ __->__ _git commit -m 'fix(app): maximum call stack'_
+* _**git refactor** MainController "removed duplicate code"_ __->__ _git commit -m 'refactor(MainController): removed duplicate code'_
+* _**git style** input.scss "added secondary styling"_ __->__ _git commit -m 'style(input.scss): added secondary styling'_
+* _**git test** appSpec "fixed test cases for code changes"_ __->__ _git commit -m 'test(appSpec): fixed test cases for code changes'_
+* _**git perf** main.js "minified and bundled abc.js and def.js"_ __->__ _git commit -m 'perf(main.js): minified and bundled abc.js and def.js'_
+* _**git cleanup** dateFilter "removed never executable code"_ __->__ _git commit -m 'cleanup(dateFilter): removed never executable code'_
+* _**git tracking** sidebar "clicks on links"_ __->__ _git commit -m 'tracking(sidebar): clicks on links'_
 
-* ```git feat <scope> "commit-message-here"``` -> ```git commit -m 'feat(<scope>): commit-message-here'```
-* ```git docs <scope> "commit-message-here"``` -> ```git commit -m 'docs(<scope>): commit-message-here'```
-* ```git chore <scope> "commit-message-here"``` -> ```git commit -m 'chore(<scope>): commit-message-here'```
-* ```git fix <scope> "commit-message-here"``` -> ```git commit -m 'fix(<scope>): commit-message-here'```
-* ```git refactor <scope> "commit-message-here"``` -> ```git commit -m 'refactor(<scope>): commit-message-here'```
-* ```git style <scope> "commit-message-here"``` -> ```git commit -m 'style(<scope>): commit-message-here'```
-* ```git test <scope> "commit-message-here"``` -> ```git commit -m 'test(<scope>): commit-message-here'```
-* ```git perf <scope> "commit-message-here"``` -> ```git commit -m 'perf(<scope>): commit-message-here'```
-* ```git cleanup <scope> "commit-message-here"``` -> ```git commit -m 'cleanup(<scope>): commit-message-here'```
-* ```git tracking <scope> "commit-message-here"``` -> ```git commit -m 'tracking(<scope>): commit-message-here'```
+2. __Committing with options__
+* **```git <type> <scope> <commit-message> [options]```** -> **```git commit [options] -m '<type>(<scope>): <commit-message>'```**
 
+e.g.
+* _**git feat** install.sh "added options feature" a_ __->__ _git commit -a -m 'feat(install.sh): added options feature'_
+* _**git fix** app "maximum call stack issue" p_ __->__ _git commit -p -m 'fix(app): maximum call stack'_
+
+**Note:** Only those options can work that precedes `-m` option in git commit, such as `-p`, `-a`, `-s`, `-v`, `-c` .
 ## Guidelines
 ### Selecting `type` 
 Different types of `type` are there according to make sure one can get idea about the core reason of commit message. Current script supports following types of commits.
