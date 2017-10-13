@@ -15,7 +15,7 @@ These are **custom git commands** that encourages the git user to write formatte
  
  More shorter way possible now: 
  
- e.g. ```gf feat install.sh 'Added commit semantics aliases'``` -> ```git commit -m 'feat(install.sh): Added commit semantics aliases'```
+ e.g. ```gf install.sh 'Added commit semantics aliases'``` -> ```git commit -m 'feat(install.sh): Added commit semantics aliases'```
 ## Installation
 
 1. Clone this repo, preferably in your $HOME directory. ```git clone git@github.com:akanshgulati/commit-semantics.git
@@ -36,27 +36,28 @@ Once you install, you can use 10 git aliases in following ways:
 **```git <type> <scope> <commit-message>```** -> **```git commit -m '<type>(<scope>): <commit-message>'```** 
 
 e.g.
-* _**git feat** install.sh "added options feature"_ __->__ _git commit -m 'feat(install.sh): added options feature'_
-* _**git docs** readme "updated usage section"_ __->__ _git commit -m 'docs(readme): updated usage section'_
-* _**git chore** package.json "Added task for uglify"_ __->__ _git commit -m 'chore(package.json): added task for uglify'_
-* _**git fix** app "maximum call stack issue"_ __->__ _git commit -m 'fix(app): maximum call stack'_
-* _**git refactor** MainController "removed duplicate code"_ __->__ _git commit -m 'refactor(MainController): removed duplicate code'_
-* _**git style** input.scss "added secondary styling"_ __->__ _git commit -m 'style(input.scss): added secondary styling'_
-* _**git test** appSpec "fixed test cases for code changes"_ __->__ _git commit -m 'test(appSpec): fixed test cases for code changes'_
-* _**git perf** main.js "minified and bundled abc.js and def.js"_ __->__ _git commit -m 'perf(main.js): minified and bundled abc.js and def.js'_
-* _**git cleanup** dateFilter "removed never executable code"_ __->__ _git commit -m 'cleanup(dateFilter): removed never executable code'_
-* _**git tracking** sidebar "clicks on links"_ __->__ _git commit -m 'tracking(sidebar): clicks on links'_
+* _**git feat** install.sh "options in alias command"_ __->__ _git commit -m 'feat(install.sh): options in alias command'_
+* _**git docs** LICENSE "update to apache 2.0 style"_ __->__ _git commit -m 'docs(LICENSE): update to apache 2.0 style'_
+* _**git chore** package.json "task to uglify JS"_ __->__ _git commit -m 'chore(package.json): task to uglify JS'_
+* _**git fix** app "maximum call stack issue"_ __->__ _git commit -m 'fix(app): maximum call stack issue'_
+* _**git refactor** MainController "change callbacks to promises"_ __->__ _git commit -m 'refactor(MainController): change callbacks to promises'_
+* _**git style** navbar "add sticky position"_ __->__ _git commit -m 'style(navbar): add sticky position'_
+* _**git test** appSpec "fix test cases for init method"_ __->__ _git commit -m 'test(appSpec): fix test cases for init method'_
+* _**git perf** accordion "add lazy load in thumbnails"_ __->__ _git commit -m 'perf(accordion): add lazy load in thumbnails'_
+* _**git cleanup** dateFilter "remove unused dateChange method"_ __->__ _git commit -m 'cleanup(dateFilter): remove unused dateChange method'_
+* _**git tracking** sidebar "add click event on links"_ __->__ _git commit -m 'tracking(sidebar): add click event on links'_
 
 2. __Committing with options__
 * **```git <type> <scope> <commit-message> [options]```** -> **```git commit [options] -m '<type>(<scope>): <commit-message>'```**
 
 e.g.
-* _**git feat** install.sh "added options feature" a_ __->__ _git commit -a -m 'feat(install.sh): added options feature'_
-* _**git fix** app "maximum call stack issue" p_ __->__ _git commit -p -m 'fix(app): maximum call stack'_
+* _**git feat** install.sh "options in alias command" a_ __->__ _git commit -a -m 'feat(install.sh): options in alias command'_
+* _**git fix** app "maximum call stack issue" p_ __->__ _git commit -p -m 'fix(app): maximum call stack issue'_
 
 **Note:** Only those options can work that precedes `-m` option in git commit, such as `-p`, `-a`, `-s`, `-v`, `-c` .
 ## Guidelines
 ### Selecting `type` 
+____
 Different types of `type` are there according to make sure one can get idea about the core reason of commit message. Current script supports following types of commits.
 
 * **feat**: Commits related to a new feature developed
@@ -73,15 +74,47 @@ generation
 * **docs**: Commits related to documentation changes, such as Readme.md file
 
 ### Selecting `scope` 
-
+____
 The scope in commit message could be anything specifying context of the commit change. A scope context can be a `module`,
 `fileName`, `serviceName`, `directiveName`, `functionName` , `impactArea`, etc.
+### Selecting `commit-message`
+____
+There are certain rules that everyone should follow to commit like a pro.
+1. [**Limit of 50 characters**](#heading-message-one)
+2. [**Do not end the message with a period**](#heading-message-two)
+3. [**Use imperative form**](#heading-message-three)
+4. [**Use present tense**](#heading-message-four)
 
+#### <a name="heading-message-one"></a> 1. Limit of 50 characters
+50 characters is not a hard limit, just a rule of thumb. Keeping message at this length ensures that they are readable, and forces the author to think for a moment about the most concise way to explain what’s going on.
+Even Github truncates any message line longer than 72 characters with an ellipsis.
+> If your message length increases 50 characters even after summarizing, try to adopt atomic commits pattern. You can use `git add -p` to get better insight of changes.
+
+#### <a name="heading-message-two"></a> 2. Do not end the message with a period
+Punctuation marks at the end of message is not required as commit messages are considered as subject or titles.
+#### <a name="heading-message-three"></a> 3. Use imperative form
+Imperative form ensures to convey the correct instruction of the commit in short and crisp form. With the current commit semantics, keeping imperative form is much easier.
+Few examples: 
+* Pour me a glass of water.
+* Leave the package at the door.
+* Take me to the library.
+
+You can read more about imperative form [here](http://www.k12reader.com/learn-about-imperative-sentences-now/).
+#### <a name="heading-message-four"></a> 4. Use present tense
+Usually, we believe commit message records what we have done. But, Git is a distributed version control system where there are potentially many places to get changes from. Rather than writing messages that say what you’ve done; consider these messages as the instructions for what applying the commit will do.
+
+For example: 
+
+`Renamed the variabled for better context` should be `Rename the variabled for better context`
+
+Even Git generated commit messages are in present tense. For example: 
+
+`Merge pull request #1 from akanshgulati/better-desc `
 ## Example
 
 ##### **Command**:  
-git refactor header 'change z-index'
+git style header 'move header on top of elements'
 ##### **Output**: 
-git commit -m "refactor(header): change z-index"
+git commit -m "style(header): move header on top of elements"
 
  
