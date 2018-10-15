@@ -18,7 +18,7 @@ These are **custom git commands** that encourages the git user to write formatte
  e.g. ```gf install.sh 'Added commit semantics aliases'``` -> ```git commit -m 'feat(install.sh): Added commit semantics aliases'```
 ## Installation
 
-1. Clone this repo, preferably in your $HOME directory. ```git clone git@github.com:akanshgulati/commit-semantics.git
+1. Clone this repo, preferably in your $HOME directory. ```git clone https://github.com/akanshgulati/commit-semantics.git
  ~/.commit-semantics```
 
 
